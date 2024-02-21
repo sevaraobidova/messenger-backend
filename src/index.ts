@@ -7,15 +7,15 @@ const nodeenv = process.env.NODE_ENV;
 const PORT = process.env.PORT;
 const MY_LINK = process.env.MY_LINK;
 const MONGO_LINK = process.env.MONGO_LINK;
-const userRouter = require("../app/userRouter/userRouter");
+const userRouter = require("./app/auth/router/authRoute");
 const app: Application = express();
 
 app.use(express.json());
-app.use("/user", userRouter);
+app.use("/auth", userRouter);
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello world hello");
-});
+// app.get("/", (req: Request, res: Response) => {
+//   res.send("Hello world hello");
+// });
 
 mongoose
   .connect(`${MONGO_LINK}`)
